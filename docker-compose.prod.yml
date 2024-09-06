@@ -11,7 +11,8 @@ services:
     build:
       context: ./client-gateway
       dockerfile: dockerfile.prod
-    image: client-gateway-prod
+    # image: client-gateway-prod
+    image: northamerica-northeast1-docker.pkg.dev/miprimerproyecto-1164/image-registry/client-gateway
     ports:
       - ${CLIENT_GATEWAY_PORT}:${CLIENT_GATEWAY_PORT}
     environment:
@@ -22,7 +23,8 @@ services:
     build: 
       context: ./auth-ms
       dockerfile: dockerfile.prod
-    image: auth-ms
+    # image: auth-ms
+    image: northamerica-northeast1-docker.pkg.dev/miprimerproyecto-1164/image-registry/auth-ms
     environment:
     - PORT=3000
     - NATS_SERVERS=nats://nats-server:4222
@@ -34,7 +36,8 @@ services:
     build: 
       context: ./products-ms
       dockerfile: dockerfile.prod
-    image: products-ms
+    # image: products-ms
+    image: northamerica-northeast1-docker.pkg.dev/miprimerproyecto-1164/image-registry/products-ms
     environment:
       - PORT=3001
       - NATS_SERVERS=nats://nats-server:4222
@@ -48,7 +51,8 @@ services:
       dockerfile: dockerfile.prod
       args:
         - ORDERS_DATABASE_URL=${ORDERS_DATABASE_URL}
-    image: orders-ms
+    # image: orders-ms
+    image: northamerica-northeast1-docker.pkg.dev/miprimerproyecto-1164/image-registry/orders-ms
     environment:
       - PORT=3000
       - DATABASE_URL=${ORDERS_DATABASE_URL}
@@ -62,7 +66,7 @@ services:
     build:
       context: ./payments-ms
       dockerfile: dockerfile.prod
-    image: northamerica-northeast1-docker.pkg.dev/tienda-microservices/image-registry/payments-ms
+    image: northamerica-northeast1-docker.pkg.dev/miprimerproyecto-1164/image-registry/payments-ms
     ports:
       - ${PAYMENTS_MS_PORT}:${PAYMENTS_MS_PORT}
     environment:
